@@ -1,0 +1,3 @@
+include ':triangleconcentricarcview'
+include ':app'
+rootProject.name = "LinkedTriangleConcentricArcView"
