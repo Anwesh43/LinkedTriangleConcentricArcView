@@ -216,4 +216,13 @@ class TriangleConcentricArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : TriangleConcentricArcView {
+            val view : TriangleConcentricArcView = TriangleConcentricArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
