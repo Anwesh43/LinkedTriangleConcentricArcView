@@ -191,4 +191,27 @@ class TriangleConcentricArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : TriangleConcentricArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val tca : TriangleConcentricArc = TriangleConcentricArc(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            tca.draw(canvas, paint)
+            animator.animate {
+                tca.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tca.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
